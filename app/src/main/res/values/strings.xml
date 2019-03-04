@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">OutlawRampage</string>
+
+    <string name="background">background</string>
+    <string name="left">Left</string>
+    <string name="jump">Jump</string>
+    <string name="shoot">Shoot</string>
+    <string name="right">Right</string>
+    <string name="runner">runner</string>
+</resources>
+

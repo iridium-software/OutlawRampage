@@ -1,5 +1,6 @@
 package com.example.outlawrampage;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +14,6 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
-    private ImageButton right;
-    private ImageButton left;
-    private ImageButton jump;
     private ImageView runner;
     private Handler handler = new Handler();
     private Timer timer;
@@ -36,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 //        return jump;
 //    }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +42,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         runner = findViewById(R.id.runner);
 
-        right = findViewById(R.id.right);
+        ImageButton right = findViewById(R.id.right);
         right.setOnTouchListener(this);
 
-        left = findViewById(R.id.left);
+        ImageButton left = findViewById(R.id.left);
         left.setOnTouchListener(this);
 
 
-        jump = findViewById(R.id.jump);
+        ImageButton jump = findViewById(R.id.jump);
         jump.setOnTouchListener(this);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event){
         switch(v.getId()){

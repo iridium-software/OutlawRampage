@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
     private ImageButton right;
     private ImageButton left;
@@ -44,15 +44,23 @@ public class MainActivity extends AppCompatActivity {
         runner = findViewById(R.id.runner);
 
         right = findViewById(R.id.right);
-        right.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+        right.setOnTouchListener(this);
 
+        left = findViewById(R.id.left);
+        left.setOnTouchListener(this);
+
+
+        jump = findViewById(R.id.jump);
+        jump.setOnTouchListener(this);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event){
+        switch(v.getId()){
+            case R.id.right:
                 //citation: https://www.youtube.com/watch?v=06rVQ1kUXc4
                 switch (event.getAction()) {
-
                     case MotionEvent.ACTION_DOWN:
-
                         //citation: https://www.youtube.com/watch?v=UxbJKNjQWD8
                         timer = new Timer(); //need to start a new timer every time you press the button
                         timer.schedule(new TimerTask() {
@@ -67,22 +75,12 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, 1, 50);
                         return true;
-
                     case MotionEvent.ACTION_UP:
                         timer.cancel(); //end the timer when you release the button
                         return true;
                 }
-
                 return false;
-            }
-        });
-
-
-        left = findViewById(R.id.left);
-        left.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
+            case R.id.left:
                 //citation: https://www.youtube.com/watch?v=06rVQ1kUXc4
                 switch (event.getAction()) {
 
@@ -106,18 +104,9 @@ public class MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP:
                         timer.cancel(); //end the timer when you release the button
                         return true;
-                }
-
+                    }
                 return false;
-            }
-        });
-
-
-        jump = findViewById(R.id.jump);
-        jump.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
+            case R.id.jump:
                 //citation: https://www.youtube.com/watch?v=06rVQ1kUXc4
                 switch (event.getAction()) {
 
@@ -158,10 +147,10 @@ public class MainActivity extends AppCompatActivity {
                         timer.cancel(); //end the timer when you release the button
                         return true;
                 }
-
                 return false;
-            }
-        });
+            default:
+                return false;
+        }
     }
 }
 

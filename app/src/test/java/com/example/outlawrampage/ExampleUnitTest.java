@@ -10,33 +10,8 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-
-//    @Test
-//    public void getRightTest () {
-//        MainActivity main = new MainActivity();
-//
-//        assertEquals(main.right, main.getRight());
-//    }
-//
-//    @Test
-//    public void getLeftTest () {
-//        MainActivity main = new MainActivity();
-//
-//        assertEquals(main.left, main.getLeft());
-//    }
-//
-//    @Test
-//    public void getJumpTest () {
-//        MainActivity main = new MainActivity();
-//
-//        assertEquals(main.jump, main.getJump());
-//    }
-//
-//    @Test
-//    public void getRunnerTest () {
-//        MainActivity main = new MainActivity();
-//
-//        assertEquals(main.runner, main.getRunner());
-//    }
-
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
+    }
 }

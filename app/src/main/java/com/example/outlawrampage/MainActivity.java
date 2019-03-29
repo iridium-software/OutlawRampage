@@ -1,9 +1,9 @@
 package com.example.outlawrampage;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+public class MainActivity extends Activity implements View.OnTouchListener {
 
     private ImageButton right;
     private ImageButton left;
@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(new GameView(this));
 
+        /*
         Jebediah = findViewById(R.id.Jebediah);
         Jebediah.setImageResource(R.drawable.cowboy4_walkwithoutgun_0);
         bullet = findViewById(R.id.bullet);
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         shoot = findViewById(R.id.shoot);
         shoot.setOnTouchListener(this);
+        */
     }
 
     @SuppressLint("ClickableViewAccessibility")

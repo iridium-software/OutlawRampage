@@ -19,6 +19,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameThread thread;
 
+    private Drawable background;
+
     CowboyCharacter player;
 //    Bitmap player;
     BitmapFactory factory = new BitmapFactory();
@@ -39,6 +41,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         player = new CowboyCharacter(context);
 
         setFocusable(true);
+
+        background = context.getResources().getDrawable(R.drawable.west);
     }
 
     @Override
@@ -74,6 +78,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        Rect imageBounds= canvas.getClipBounds();
+        background.setBounds(imageBounds);
+        background.draw(canvas);
         canvas.drawBitmap(player.getPlayer(), player.x, player.y, null);
 //        canvas.drawBitmap(player, x, y, null);
     }

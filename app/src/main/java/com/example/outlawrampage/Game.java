@@ -14,12 +14,16 @@ import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameThread thread;
 
+    private Drawable background;
+
     CowboyCharacter player;
+    Buttons buttons;
 //    Bitmap player;
     BitmapFactory factory = new BitmapFactory();
 //    float x;
@@ -37,6 +41,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
 //        player = factory.decodeResource(getResources(), R.drawable.cowboy4_walkwithoutgun_0);
         player = new CowboyCharacter(context);
+        buttons = new Buttons(context);
+
+        background = context.getResources().getDrawable(R.drawable.west);
 
         setFocusable(true);
     }
@@ -67,14 +74,25 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update(Canvas canvas) {
-        canvas.drawBitmap(player.getPlayer(), player.x, player.y, null);
+        canvas.drawBitmap(player.getPlayer(), player.x - player.getPlayer().getWidth() / 2,
+                player.y - player.getPlayer().getHeight() / 2, null);
 //        canvas.drawBitmap(player, x, y, null);
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawBitmap(player.getPlayer(), player.x, player.y, null);
+        Rect imageBounds= canvas.getClipBounds();
+        background.setBounds(imageBounds);
+        background.draw(canvas);
+        canvas.drawBitmap(player.getPlayer(), player.x - player.getPlayer().getWidth() / 2,
+                player.y - player.getPlayer().getHeight() / 2, null);
+        canvas.drawBitmap(buttons.getLeftB(), 0, canvas.getHeight() - 120, null);
+        canvas.drawBitmap(buttons.getRightB(), buttons.getLeftB().getWidth() + 5, canvas.getHeight() - 120, null);
+        canvas.drawBitmap(buttons.getJump(), canvas.getWidth() - 300 - buttons.getShoot().getWidth(),
+                canvas.getHeight() - 150, null);
+        canvas.drawBitmap(buttons.getShoot(), canvas.getWidth() - 300, canvas.getHeight() - 150, null);
+
 //        canvas.drawBitmap(player, x, y, null);
     }
 
@@ -82,12 +100,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
             player.update(event.getX(), event.getY());
-//            x = event.getX();
-//            y = event.getY();
         }
 
         return true;
     }
-
 
 }

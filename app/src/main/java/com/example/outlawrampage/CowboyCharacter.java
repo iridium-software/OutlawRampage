@@ -20,21 +20,11 @@ public class CowboyCharacter extends SurfaceView {
 
     BitmapFactory factory = new BitmapFactory();
     Bitmap player = factory.decodeResource(getResources(), R.drawable.cowboy4_walkwithoutgun_0);
-    float x = 0;
-    float y = 0;
+    float x = 50;
+    float y = 50;
 
     public Bitmap getPlayer() {
         return player;
-    }
-
-    @Override
-    public void draw (Canvas canvas) {
-        super.draw(canvas);
-        canvas.drawBitmap(player, x, y, null);
-    }
-
-    public void update(Canvas canvas) {
-        canvas.drawBitmap(player, x, y, null);
     }
 
     public void update(float x, float y) {

@@ -46,6 +46,8 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         background = context.getResources().getDrawable(R.drawable.west);
 
         setFocusable(true);
+
+        background = context.getResources().getDrawable(R.drawable.west);
     }
 
     @Override

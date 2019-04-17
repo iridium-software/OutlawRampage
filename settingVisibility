@@ -1,0 +1,23 @@
+  //add this method to the main activity file
+ //call this method in the  "protected void onCreate(Bundle savedInstanceState) {"  method
+ //between killJeb() and indianAttack()
+ //make sure you set the buttons default visibility to invisibile in the main activities XML file
+ 
+ 
+  public void setVis(){
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (gotToGold()) {
+                            next.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }, 400);
+            }
+        }, 1000, 50);
+
+    }
